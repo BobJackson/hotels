@@ -31,15 +31,15 @@ class HotelList extends React.Component {
     }
 
     render() {
-        let books = this.state.covers.map((item) => {
+        let hotels = this.state.covers.map((item) => {
             return (
                 <Col className="BookContainer mt-2" key={item.id}>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={item.picUrl} key={item.id} rounded={true} fluid={true} />
+                    <Card style={{width: '18rem'}}>
+                        <Card.Img variant="top" src={item.picUrl} key={item.id} rounded={true} fluid={true}/>
                         <Card.Body>
                             <Card.Title className="HotelName">{item.name}</Card.Title>
                             <Card.Text>
-                                <section style={{ textAlign: "left"}}>
+                                <section style={{textAlign: "left"}}>
                                     <div>
                                         <span style={{marginRight: "2rem"}}><FaCity/>：{item.cityName}</span>
                                         <span><GiDeathZone/>：{item.zone}</span>
@@ -61,7 +61,7 @@ class HotelList extends React.Component {
 
         return (
             <Row className="mt-2 mb-1" md={3} lg={4}>
-                {books}
+                {hotels}
             </Row>
         );
     }
