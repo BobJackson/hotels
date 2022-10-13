@@ -1,4 +1,4 @@
-import {Card, Col, Row} from "react-bootstrap";
+import {Card, Col, Image, Modal, Row} from "react-bootstrap";
 import React from "react";
 import {AiFillMoneyCollect} from "@react-icons/all-files/ai/AiFillMoneyCollect";
 import {FaCity} from "@react-icons/all-files/fa/FaCity";
@@ -11,7 +11,10 @@ class HotelList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            covers: []
+            covers: [],
+            show: false,
+            hotelName: "",
+            hotelPic: ""
         };
     }
 
@@ -31,11 +34,24 @@ class HotelList extends React.Component {
     }
 
     render() {
+
         let hotels = this.state.covers.map((item) => {
             return (
                 <Col className="BookContainer mt-2" key={item.id}>
                     <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={item.picUrl} key={item.id} rounded={"true"} fluid={"true"}/>
+                        <Card.Img variant="top"
+                                  src={item.picUrl}
+                                  key={item.id}
+                                  rounded={"true"}
+                                  fluid={"true"}
+                                  onClick={() => this.setState(
+                                      {
+                                          show: true,
+                                          hotelName: item.name,
+                                          hotelPic: item.originImage
+                                      }
+                                  )}
+                        />
                         <Card.Body>
                             <Card.Title className="HotelName">{item.name}</Card.Title>
                             <Card.Text style={{textAlign: "left"}}>
@@ -43,7 +59,10 @@ class HotelList extends React.Component {
                                 <span><GiDeathZone/>：{item.zone}</span>
                                 <br/>
                                 <span
-                                    style={{marginRight: "0.5rem", color: "orange"}}><AiFillMoneyCollect/>：{item.price}</span>
+                                    style={{
+                                        marginRight: "0.5rem",
+                                        color: "orange"
+                                    }}><AiFillMoneyCollect/>：{item.price}</span>
                                 <span style={{
                                     marginRight: "0.5rem",
                                     marginLeft: "0.5rem",
@@ -58,9 +77,28 @@ class HotelList extends React.Component {
         });
 
         return (
-            <Row className="mt-2 mb-1" md={3} lg={4}>
-                {hotels}
-            </Row>
+            <>
+                <Row className="mt-2 mb-1" md={3} lg={4}>
+                    {hotels}
+                </Row>
+                <Modal
+                    show={this.state.show}
+                    onHide={() => this.setState({show: false, hotelName: "", hotelPic: ""})}
+                    dialogClassName="modal-60w"
+                    aria-labelledby="example-custom-modal-styling-title"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-custom-modal-styling-title">
+                            {this.state.hotelName}
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div style={{textAlign: "center"}}>
+                            <Image src={this.state.hotelPic} rounded={true} style={{maxWidth: "100%"}}/>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            </>
         );
     }
 }

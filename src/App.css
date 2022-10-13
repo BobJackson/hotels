@@ -1,10 +1,15 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 
-.HotelName{
-  text-align: left;
-  color: grey;
-  font-size: medium;
+.HotelName {
+    text-align: left;
+    color: grey;
+    font-size: medium;
+}
+
+.modal-60w {
+    width: 60%;
+    max-width: none !important;
 }
