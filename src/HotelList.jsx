@@ -24,7 +24,7 @@ class HotelList extends React.Component {
         if (env === 'development') {
             baseUrl = "http://localhost:8080"
         } else if (env === 'production') {
-            baseUrl = "https://books.wangyousong.com"
+            baseUrl = "https://hotels.wangyousong.com"
         }
 
         fetch(baseUrl + '/api/v1/hotels')
