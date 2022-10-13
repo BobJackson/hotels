@@ -35,23 +35,21 @@ class HotelList extends React.Component {
             return (
                 <Col className="BookContainer mt-2" key={item.id}>
                     <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={item.picUrl} key={item.id} rounded={true} fluid={true}/>
+                        <Card.Img variant="top" src={item.picUrl} key={item.id} rounded={"true"} fluid={"true"}/>
                         <Card.Body>
                             <Card.Title className="HotelName">{item.name}</Card.Title>
-                            <Card.Text>
-                                <section style={{textAlign: "left"}}>
-                                    <div>
-                                        <span style={{marginRight: "2rem"}}><FaCity/>：{item.cityName}</span>
-                                        <span><GiDeathZone/>：{item.zone}</span>
-                                    </div>
-                                    <div>
-                                        <span style={{marginRight: "0.5rem", color: "orange"}}><AiFillMoneyCollect/>：{item.price}</span>
-                                        <span style={{marginRight: "0.5rem", marginLeft: "0.5rem", color: "green"}}><FcRating/>：{item.commentScore}</span>
-                                    </div>
-                                    <div>
-                                        <span style={{color: "red"}}><IoHeartCircleSharp/>：{item.favoriteCount}</span>
-                                    </div>
-                                </section>
+                            <Card.Text style={{textAlign: "left"}}>
+                                <span style={{marginRight: "2rem"}}><FaCity/>：{item.cityName}</span>
+                                <span><GiDeathZone/>：{item.zone}</span>
+                                <br/>
+                                <span
+                                    style={{marginRight: "0.5rem", color: "orange"}}><AiFillMoneyCollect/>：{item.price}</span>
+                                <span style={{
+                                    marginRight: "0.5rem",
+                                    marginLeft: "0.5rem",
+                                    color: "green"
+                                }}><FcRating/>：{item.commentScore}</span>
+                                <span style={{color: "red"}}><IoHeartCircleSharp/>：{item.favoriteCount}</span>
                             </Card.Text>
                         </Card.Body>
                     </Card>
